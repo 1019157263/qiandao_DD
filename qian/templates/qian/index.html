@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"> 
+    <title>创建签到任务</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> 
+    <script src="//cdn.bootcss.com/codemirror/5.2.0/codemirror.min.js"></script>
+    <link rel="shortcut icon" href="//static.runoob.com/images/favicon.ico" mce_href="//static.runoob.com/images/favicon.ico" type="image/x-icon" >
+	<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.2.0/codemirror.min.css">
+	<script src="//cdn.bootcss.com/codemirror/5.2.0/mode/htmlmixed/htmlmixed.min.js"></script>
+	<script src="//cdn.bootcss.com/codemirror/5.2.0/mode/css/css.min.js"></script>
+	<script src="//cdn.bootcss.com/codemirror/5.2.0/mode/javascript/javascript.min.js"></script>
+	<script src="//cdn.bootcss.com/codemirror/5.2.0/mode/xml/xml.min.js"></script>
+	<script src="//cdn.bootcss.com/codemirror/5.2.0/addon/edit/closetag.min.js"></script>
+	<script src="//cdn.bootcss.com/codemirror/5.2.0/addon/edit/closebrackets.min.js"></script>
+	<!--[if lt IE 9]>
+	<script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<center><h1>创建签到任务</h1></center>
+<style>
+table {
+font-size:20px;
+}
+
+body{min-height:20px;padding-top:20px;background: #f6f6f6;}.container{width:98%;padding-right:10px;padding-left:15px;margin-right:auto;margin-left:auto}.CodeMirror{min-height:250px;;font-family: Menlo,Monaco,Consolas,"Andale Mono","lucida console","Courier New",monospace;}#textareaCode{min-height:200px}#iframeResult{display: block;overflow: hidden;border:0!important;min-width:100px;width:100%;min-height:20px;background-color:#fff}@media screen and (max-width:768px){#textareaCode{height:200px}.CodeMirror{height:300px;font-family: Menlo,Monaco,Consolas,"Andale Mono","lucida console","Courier New",monospace;}#iframeResult{height:300px}.form-inline{padding:6px 0 2px 0}}.logo h1{background-image:url(/images/logo-domain-white.png);background-repeat:no-repeat;text-indent:-9999px;width:160px;height:39px;margin-top:10px;display:block}
+</style>
+				<div class="panel-body">
+				 <form action="{% url 'qian:index' %}" method="post">
+{% csrf_token %}
+		 <input name="name" type="text" class="form-control" id="name" placeholder="请输入任务名称">
+<br>
+<table>
+			<textarea  type="text" placeholder="请输入http报文" class="form-control"  id="textareaCode" name="http">
+</textarea>
+</table>
+<br>
+<button class="btn btn-primary btn-lg btn-block">提交签到任务</button>
+</form>
+	</div>
+</div>
+</div></body>
+</html>

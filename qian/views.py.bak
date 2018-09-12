@@ -1,0 +1,32 @@
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from .models import data,user
+# Create your views here.
+from . import HttpPars
+import json
+#print(HttpPars.HttpPars(a).Pars())
+
+
+
+def index(request):
+     #return HttpResponse('666')
+     if request.method=='GET':     
+           return render(request,'qian/index.html')       
+     if request.method=='POST':
+           name=request.POST['name']      
+           http=request.POST['http']
+           open('xx.txt','w').write(http)
+           print(http)
+           try:
+             dict=HttpPars.HttpPars(str(http)).Pars()
+          # print(dict)
+             x=json.dumps(dict, ensure_ascii=False,sort_keys=True, indent=4, separators=(',', ': '))       
+             print(x)
+             b=data.objects.create(user=user.objects.all()[0],name=name,fk=dict['fk'],url=dict['url'],cookie='null',header=dict['header'],data=dict['data'])
+           
+             return HttpResponse('<h1>:)  添加成功<br></h1>'+x)
+           except:
+             return HttpResponse('<h1>:)  添加失败<br></h1>'+x)
+           
+     
+ 

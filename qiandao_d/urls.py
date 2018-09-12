@@ -16,11 +16,13 @@ Including another URLconf
 
 # -*- coding:utf-8 -*-
 #from Ding import *
-print('顶层url')
 import schedule
 import time
 import threading
 from qian.models import data,log_a
+from django.contrib import admin
+from django.urls import path
+from django.urls import include, path
 import requests,json,uuid
 import datetime
 #log.objects.all().delete()
@@ -30,38 +32,46 @@ class qian:
     def __init__(self):
         self.data=data.objects.all()
     def qian(self):
+       try:
         for i in self.data:
-            if i.fk=='GET':
-            
+            if i.fk=='GET':            
+              if i.cookie=='null':
+               print('没cookie')
+               a=requests.get(i.url,data=i.data,headers=eval(i.header))              
+              else:
+               print('有cookie')
                a=requests.get(i.url,data=i.data,cookies=eval(i.cookie),headers=eval(i.header))
-              # b=log_a.objects.create(user=uuid.uuid1(),username=i.user,data=str(a.text),time= datetime.datetime.now())
-               try:
+              
+              try:
                    print(json.loads(a.text))
                    b=log_a.objects.create(user=uuid.uuid1(),name=i.name,username=i.user,data=str(a.json()),time= datetime.datetime.now())
                
-               except:
+              except:
                    print(a.text)
-                   b=log_a.objects.create(user=uuid.uuid1(),username=i.user,data=str(a.text),time= datetime.datetime.now())
+                   b=log_a.objects.create(user=uuid.uuid1(),name=i.name,username=i.user,data=str(a.text),time= datetime.datetime.now())
              
             elif i.fk=='POST':
-                pass              
-               #print(i.user)
+              if i.cookie=='null':
+               print('没cookie')
+               a=requests.post(i.url,data=i.data,headers=eval(i.header))              
+              else:
+               print('有cookie')
+               a=requests.post(i.url,data=i.data,cookies=eval(i.cookie),headers=eval(i.header))
+              
+              try:
+                   print(json.loads(a.text))
+                   b=log_a.objects.create(user=uuid.uuid1(),name=i.name,username=i.user,data=str(a.json()),time= datetime.datetime.now())
                
+              except:
+                   print(a.text)
+                   b=log_a.objects.create(user=uuid.uuid1(),name=i.name,username=i.user,data=str(a.text),time= datetime.datetime.now())
+             
             
-
-
-
-
-
-
-
-
-
-
-
-
+                #未完              
+       except:
+         print('错误')    
 def job():
-    print("I'm working...%s")
+    print("I'm working...")
     a=qian()
     a.qian()
 
@@ -72,19 +82,15 @@ schedule.every(1).minutes.do(job)
 #schedule.every().wednesday.at("13:15").do(job)
 
 def xxx():
-  while True:
-      schedule.run_pending()
-      time.sleep(1)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
       
 t =threading.Thread(target=xxx)
 t.start()
 
 
 
-
-from django.contrib import admin
-from django.urls import path
-from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
      path('qian/', include('qian.urls')),

@@ -1,15 +1,7 @@
-POST /cm/api/receive/content/pc HTTP/1.1
-Host: cm.bilibili.com
-Connection: keep-alive
-Content-Length: 241
-Accept: application/json, text/javascript, */*; q=0.01
-Origin: https://m.bilibili.com
-User-Agent: Mozilla/5.0 (Linux; Android 8.0.0; MI 6 Build/OPR1.170623.027; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36
-Content-Type: application/json
-Referer: https://m.bilibili.com/index.html
-Accept-Encoding: gzip, deflate
-Accept-Language: zh-CN,en-US;q=0.9
-Cookie: finger=a8c412ba; buvid3=0E0E63AF-4352-47DC-9233-47069AF188CA27969infoc; sid=ccx9gx4p; DedeUserID=21827921; DedeUserID__ckMd5=221f69f7c8e4b340; SESSDATA=ae8de8ea%2C1539313296%2C389ee519; bili_jct=a568d3a46bcd855c2bf418952079ee89; bsource=bdts
-X-Requested-With: mark.via
-
-{"uploads":[{"src_id":2809,"ad_server":"bilibili","is_ad":0,"area":1,"ad_cb":"","event":"show","is_visible":1,"idx":3,"mid":"","client_version":"","ts":1536721268556,"resource_id":"2806","load_ts":1536721267686,"server_type":0,"id":135359}]}
+GET /client/services/thumbnails?width=240&height=240&phoneinfo=Android26&align=middle,middle&src=https%3A%2F%2Fboscdn.baidu.com%2Fv1%2Fmap-mobile-mcs%2F6_BB7EB15F-670F-5E96-327F-B8CFA1A99B5F%3Fauthorization%3Dbce-auth-v1%252Ff3790e317a2846179db09ea6e76d9c71%252F2018-04-30T10%253A52%253A03Z%252F-1%252Fhost%252F8f5228c42da26a9229a5025ac212e1b91066350160029ad15a3941445a22cc64 HTTP/1.1
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.0.0; MI 6 MIUI/8.9.13)
+Accept-Encoding: identity
+Host: webmap0.bdimg.com
+Connection: Keep-Alive
+
+

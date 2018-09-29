@@ -3,12 +3,12 @@ from django.db import models
 # Create your models here.
 
 
-
 class user(models.Model):
     username = models.CharField(max_length=200,primary_key=True)
     pwd = models.CharField(max_length=200)
     email=models.CharField(max_length=200)
     time=models.DateTimeField('date published')
+    lijie=models.CharField(max_length=500)
     class Meta:
         #末尾不加s
         verbose_name_plural='用户'

@@ -15,20 +15,6 @@ def jia_mi(str):
     return sh.hexdigest()
 
 
-# def genearteMD5(str):
-#     # 创建md5对象
-#     hl = hashlib.md5()
-#
-#     # Tips
-#     # 此处必须声明encode
-#     # 否则报错为：hl.update(str)    Unicode-objects must be encoded before hashing
-#     hl.update(str.encode(encoding='utf-8'))
-#
-#     print('MD5加密前为 ：' + str)
-#     print('MD5加密后为 ：' + hl.hexdigest())
-#     return hl.hexdigest(genearteMD5(datetime.datetime.now().strftime('%Y-%m-%d')))
-#
-#
 
 def index(request):
      #return HttpResponse('666')
@@ -51,8 +37,8 @@ def index(request):
      if request.method=='POST':
            name=request.POST['name']      
            http=request.POST['http']
-           open('xx.txt','w').write(http)
-           print(http)
+           # open('xx.txt','w').write(http)
+           # print(http)
            try:
              dict=HttpPars.HttpPars(str(http)).Pars()
           # print(dict)
@@ -66,6 +52,21 @@ def index(request):
              return HttpResponse('<h1>:)  添加失败<br></h1>')
 
 
+def sign(request):
+    # return HttpResponse('666')
+    if request.method == 'GET':
+        return render(request, 'qian/sign.html')
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['pwd']
+        email=request.POST['email']
+        #print(username,password)
+        try:
+          user.objects.create(username=username,pwd=password,email=email,time= datetime.datetime.now(),lijie='null')
+          return HttpResponse(str({'info':'sign is ok'}))
+        except BaseException as e:
+          ex={'info':str(e),'type':username}
+          return HttpResponse(str(ex))
 def login(request):
     # return HttpResponse('666')
     if request.method == 'GET':

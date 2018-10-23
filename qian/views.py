@@ -3,10 +3,27 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import data,user
 # Create your views here.
 from . import HttpPars
+
+from django.shortcuts import render
+from rest_framework import permissions,viewsets,renderers,generics
+
+from rest_framework.decorators import api_view
+
+from qian.models import user
+
+
 import json,datetime
-#print(HttpPars.HttpPars(a).Pars())
-#from django.core.urlresolvers import reverse
 from hashlib import sha1
+from django.contrib.auth.models import User, Group
+from rest_framework import viewsets
+from qian.serializers import UserSerializer
+from qian.models import user
+class UserViewSet(viewsets.ModelViewSet,generics.RetrieveUpdateAPIView,generics.RetrieveDestroyAPIView):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = user.objects.all()
+    serializer_class = UserSerializer
 
 
 def jia_mi(str):

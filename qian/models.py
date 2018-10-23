@@ -6,11 +6,12 @@ from django.db import models
 class user(models.Model):
     username = models.CharField(max_length=200,primary_key=True)
     pwd = models.CharField(max_length=200)
-    email=models.CharField(max_length=200)
-    time=models.DateTimeField('date published')
-    lijie=models.CharField(max_length=500)
+    email=models.CharField(max_length=200,null=True)
+    time=models.DateTimeField('date published',null=True)
+    lijie=models.CharField(max_length=500,null=True)
     class Meta:
         #末尾不加s
+        managed = False
         verbose_name_plural='用户'
     def __str__(self):
         return self.username

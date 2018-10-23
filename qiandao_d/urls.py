@@ -25,7 +25,13 @@ from django.urls import path
 from django.urls import include, path
 import requests,json,uuid
 import datetime
-#log.objects.all().delete()
+from django.conf.urls import url, include
+from rest_framework import routers
+from qian import views
+
+# user_list=views.UserViewSet.as_view({'get':'list','post':'create'})
+# user_detail=views.UserViewSet.as_view({'get':'retrieve'})
+# #log.objects.all().delete()
 
 
 class qian:
@@ -94,4 +100,5 @@ t.start()
 urlpatterns = [
     path('admin/', admin.site.urls),
      path('qian/', include('qian.urls')),
+
 ]

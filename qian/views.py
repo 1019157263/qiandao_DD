@@ -102,4 +102,3 @@ def login(request):
             ex={'info':'验证失败，用户名或密码错误','type':username}
             return HttpResponse(str(ex))
 
-

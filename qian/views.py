@@ -82,9 +82,12 @@ def login(request):
         try:
             pwd = user.objects.get(username=username).pwd
         except:
-            return HttpResponse('<h1>:)  登陆失败，用户名或密码错误<br></h1>')
+            ex = {'info': '验证失败，用户名或密码错误', 'type': username}
+            return HttpResponse(ex)
         if password == pwd:
-            a=render(request, 'qian/c.html')
+           # a=render(request, 'qian/c.html')
+            ex={'info':'验证成功','type':username}
+            a=HttpResponse(str(ex))
             print(66666)
             jia=jia_mi(datetime.datetime.now().strftime('%Y-%m-%d'))
            # md5=str(genearteMD5(str(datetime.datetime.now().strftime('%Y-%m-%d'))))
@@ -93,6 +96,7 @@ def login(request):
             user.objects.filter(username=username).update(lijie=jia)
             return a
         else:
-            return HttpResponse('<h1>:)  登陆失败，用户名或密码错误<br></h1>')
+            ex={'info':'验证失败，用户名或密码错误','type':username}
+            return HttpResponse(str(ex))
 
 

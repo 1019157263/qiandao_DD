@@ -42,14 +42,17 @@ def index(request):
            try:
              dict=HttpPars.HttpPars(str(http)).Pars()
           # print(dict)
-             x=json.dumps(dict, ensure_ascii=False,sort_keys=True, indent=4, separators=(',', ': '))       
+             dict['info']='提交成功'
+             dict['username'] = get_username = request.COOKIES['username']
+             x=json.dumps(dict, ensure_ascii=False,sort_keys=True, indent=4, separators=(',', ': '))
              print(x)
              get_username = request.COOKIES['username']
              b=data.objects.create(user=user.objects.get(username=get_username),name=name,fk=dict['fk'],url=dict['url'],cookie='null',header=dict['header'],data=dict['data'])
 
-             return HttpResponse('<h1>:)  添加成功<br></h1>'+x)
+             return HttpResponse(x)
            except:
-             return HttpResponse('<h1>:)  添加失败<br></h1>')
+             ex = {'info': '添加失败', 'type':'请仔细阅读使用说明书'}
+             return HttpResponse(str(ex))
 
 
 def sign(request):

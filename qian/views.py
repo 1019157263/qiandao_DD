@@ -4,6 +4,10 @@ from .models import data,user
 # Create your views here.
 from . import HttpPars
 
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
+from django_filters import rest_framework
+
 from django.shortcuts import render
 from rest_framework import permissions,viewsets,renderers,generics
 
@@ -24,6 +28,13 @@ class UserViewSet(viewsets.ModelViewSet,generics.RetrieveUpdateAPIView,generics.
     """
     queryset = user.objects.all()
     serializer_class = UserSerializer
+    filter_backends = (rest_framework.DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter,)
+    # filter_class = ServerFilter
+    search_fields = ('username', '=brand', 'status',)
+    #ordering_fields = ('cpus', 'ram', 'disk', 'product_date',)
+    #ordering = ('-created_time',)
+
+
 
 
 def jia_mi(str):

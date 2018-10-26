@@ -28,6 +28,10 @@ class data(models.Model):
         #末尾不加s
         verbose_name_plural='签到任务'
 
+    @property
+    def user_username(self):
+        return self.user.username
+
     
     def __str__(self):
         return self.name

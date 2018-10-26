@@ -20,19 +20,21 @@ import json,datetime
 from hashlib import sha1
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from qian.serializers import UserSerializer
-from qian.models import user
+from qian.serializers import UserSerializer,DataSerializer
+from qian.models import user,data
 class UserViewSet(viewsets.ModelViewSet,generics.RetrieveUpdateAPIView,generics.RetrieveDestroyAPIView):
     """
     API endpoint that allows users to be viewed or edited.
     """
     queryset = user.objects.all()
     serializer_class = UserSerializer
-    filter_backends = (rest_framework.DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter,)
-    # filter_class = ServerFilter
-    search_fields = ('username', '=brand', 'status',)
-    #ordering_fields = ('cpus', 'ram', 'disk', 'product_date',)
-    #ordering = ('-created_time',)
+
+class DataUserViewSet(viewsets.ModelViewSet,generics.RetrieveUpdateAPIView,generics.RetrieveDestroyAPIView):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = data.objects.all()
+    serializer_class = DataSerializer
 
 
 

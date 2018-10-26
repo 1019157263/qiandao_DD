@@ -13,7 +13,7 @@ app_name = 'qian'
 
 router=DefaultRouter()
 router.register(r'UserViewSet',views.UserViewSet)
-
+router.register(r'DataViewSet',views.DataUserViewSet)
 
 
 

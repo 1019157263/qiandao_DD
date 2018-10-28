@@ -82,7 +82,7 @@ def index(request):
              return HttpResponse(x)
            except:
              ex = {'info': '添加失败', 'type':'请仔细阅读使用说明书'}
-             return HttpResponse(str(ex))
+             return HttpResponse(json.dumps(ex))
 
 
 def sign(request):

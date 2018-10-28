@@ -96,10 +96,10 @@ def sign(request):
         #print(username,password)
         try:
           user.objects.create(username=username,pwd=password,email=email,time= datetime.datetime.now(),lijie='null')
-          return HttpResponse(str({'info':'sign is ok'}))
+          return HttpResponse(json.dumps({'info':'sign is ok'}))
         except BaseException as e:
           ex={'info':str(e),'type':username}
-          return HttpResponse(str(ex))
+          return HttpResponse(json.dumps(ex))
 def login(request):
     # return HttpResponse('666')
     if request.method == 'GET':
@@ -116,11 +116,11 @@ def login(request):
             pwd = user.objects.get(username=username).pwd
         except:
             ex = {'info': '验证失败，用户名或密码错误', 'type': username}
-            return HttpResponse(ex)
+            return HttpResponse(json.dumps(ex))
         if password == pwd:
            # a=render(request, 'qian/c.html')
             ex={'info':'验证成功','type':username}
-            a=HttpResponse(str(ex))
+            a=HttpResponse(json.dumps(ex))
             print(66666)
             jia=jia_mi(datetime.datetime.now().strftime('%Y-%m-%d'))
            # md5=str(genearteMD5(str(datetime.datetime.now().strftime('%Y-%m-%d'))))
@@ -130,5 +130,5 @@ def login(request):
             return a
         else:
             ex={'info':'验证失败，用户名或密码错误','type':username}
-            return HttpResponse(str(ex))
+            return HttpResponse(json.dumps(ex))
 

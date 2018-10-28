@@ -21,6 +21,10 @@
 <body>
 <center><h1>创建签到任务</h1></center>
 <style>
+table {
+font-size:20px;
+}
+
 body{min-height:20px;padding-top:20px;background: #f6f6f6;}.container{width:98%;padding-right:10px;padding-left:15px;margin-right:auto;margin-left:auto}.CodeMirror{min-height:250px;;font-family: Menlo,Monaco,Consolas,"Andale Mono","lucida console","Courier New",monospace;}#textareaCode{min-height:200px}#iframeResult{display: block;overflow: hidden;border:0!important;min-width:100px;width:100%;min-height:20px;background-color:#fff}@media screen and (max-width:768px){#textareaCode{height:200px}.CodeMirror{height:300px;font-family: Menlo,Monaco,Consolas,"Andale Mono","lucida console","Courier New",monospace;}#iframeResult{height:300px}.form-inline{padding:6px 0 2px 0}}.logo h1{background-image:url(/images/logo-domain-white.png);background-repeat:no-repeat;text-indent:-9999px;width:160px;height:39px;margin-top:10px;display:block}
 </style>
 				<div class="panel-body">

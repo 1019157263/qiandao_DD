@@ -50,7 +50,7 @@
         </label>
         
         <label class="item item-input">
-          <input name='pwd' type="text" placeholder="COOKIES">
+          <input name='pwd' type="password" placeholder="密码">
         </label>
        
         

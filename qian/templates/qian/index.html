@@ -29,7 +29,6 @@ body{min-height:20px;padding-top:20px;background: #f6f6f6;}.container{width:98%;
 </style>
 				<div class="panel-body">
 				 <form action="{% url 'qian:index' %}" method="post">
-{% csrf_token %}
 		 <input name="name" type="text" class="form-control" id="name" placeholder="请输入任务名称">
 <br>
 <table>

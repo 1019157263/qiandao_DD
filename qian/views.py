@@ -71,7 +71,6 @@ def index(request):
            # print(http)
            try:
              dict=HttpPars.HttpPars(str(http)).Pars()
-          # print(dict)
              dict['info']='提交成功'
              dict['username'] = get_username = request.COOKIES['username']
              x=json.dumps(dict, ensure_ascii=False,sort_keys=True, indent=4, separators=(',', ': '))

@@ -26,7 +26,7 @@ SECRET_KEY = 'x$0(c_-j#=-j925!da8!@_-!ha!%pi$=!cc06b8dls!s6(e9@n'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+MIDDLEWARE_CLASSES = ('app.tests.DisableCSRF',)
 
 # Application definition
 
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'qiandao_d.urls'

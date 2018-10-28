@@ -17,7 +17,7 @@ class user(models.Model):
         return self.username
   
 class data(models.Model):
-    user = models.ForeignKey(user, on_delete=models.CASCADE)
+    user = models.ForeignKey(user, related_name='tracks',on_delete=models.CASCADE)
     name = models.CharField(max_length=200)#miui
     fk = models.CharField(max_length=200)#get or post
     url = models.CharField(max_length=500)#url

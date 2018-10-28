@@ -4,11 +4,12 @@
 开发语言：python
 web框架：django
 
-####运行步骤：
+#### 运行步骤：
 1. 下载python3.x
 2. 安装django，在cmd运行 `pip install django` 
 ```
 pip install django
+pip install djangorestframework
 ```
 3.cd进工程目录
 输入：`python manage.py runserver 0.0.0.0:8000` 

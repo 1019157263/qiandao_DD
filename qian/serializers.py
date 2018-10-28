@@ -8,6 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields=["username","email","lijie","time",]
 
 class DataSerializer(serializers.ModelSerializer):
+    tracks = UserSerializer(many=True, read_only=True)
     class Meta:
         model = data
-        fields=["user","name","fk","url","cookie","header","data"]
+        fields=["user","name","fk","url","cookie","header","data","tracks"]

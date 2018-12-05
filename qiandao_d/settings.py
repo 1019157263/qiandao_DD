@@ -25,11 +25,15 @@ SECRET_KEY = 'x$0(c_-j#=-j925!da8!@_-!ha!%pi$=!cc06b8dls!s6(e9@n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['127.0.0.1','localhost']
+ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:8080',
-    'localhost:8080'
+    'localhost:8080',
+	'xuehuai.top:8080',
+	'www.xuehuai.top:8080',
+	'127.0.0.1:8000',
+	'39.108.185.66:8080'
 )
 CORS_ALLOW_CREDENTIALS = True
 #CORS_ALLOW_HEADERS = ('127.0.0.1')

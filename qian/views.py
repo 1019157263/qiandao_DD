@@ -123,8 +123,8 @@ def login(request):
             print(66666)
             jia=jia_mi(datetime.datetime.now().strftime('%Y-%m-%d'))
            # md5=str(genearteMD5(str(datetime.datetime.now().strftime('%Y-%m-%d'))))
-            a.set_cookie('username', username, max_age=100)
-            a.set_cookie('lianjie',jia, max_age=100)
+            a.set_cookie('username', username, max_age=1000)
+            a.set_cookie('lianjie',jia, max_age=1000)
             user.objects.filter(username=username).update(lijie=jia)
             return a
         else:

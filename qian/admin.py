@@ -13,11 +13,17 @@ class log_aAdmin(admin.ModelAdmin):
     
     list_display = ('name','username','time')
 
+class userAdmin(admin.ModelAdmin):
+    list_filter = ['time']#过滤器
+    search_fields = ['username']
+    
+    list_display = ('username','time')
 
 
 
 
-admin.site.register(user)
+
+admin.site.register(user,userAdmin)
 
 admin.site.register(data)
 admin.site.register(log_a,log_aAdmin)

@@ -19,7 +19,7 @@ Including another URLconf
 import schedule
 import time
 import threading
-from qian.models import data,log_a
+from qian.models import data,log_a,user
 from django.contrib import admin
 from django.urls import path
 from django.urls import include, path
@@ -42,14 +42,14 @@ class qian:
         for i in self.data:
             if i.fk=='GET':            
               if i.cookie=='null':
-               print('没cookie')
+               print(f'[任务名]{i.name}[{i.fk}]-,没cookie')
                a=requests.get(i.url,data=i.data,headers=eval(i.header))              
               else:
-               print('有cookie')
+               print(f'[任务名]{i.name}[{i.fk}]-有cookie')
                a=requests.get(i.url,data=i.data,cookies=eval(i.cookie),headers=eval(i.header))
               
               try:
-                   print(json.loads(a.text))
+                   print(f'[任务返回]{json.loads(a.text)}')
                    b=log_a.objects.create(user=uuid.uuid1(),name=i.name,username=i.user,data=str(a.json()),time= datetime.datetime.now())
                
               except:
@@ -58,14 +58,18 @@ class qian:
              
             elif i.fk=='POST':
               if i.cookie=='null':
-               print('没cookie')
-               a=requests.post(i.url,data=i.data,headers=eval(i.header))              
+
+               print(f'[任务名]{i.name}[{i.fk}]-没cookie')
+               print(f'[数据]{i.data}')
+               a=requests.post(i.url,headers=eval(i.header)) 
+			   
               else:
-               print('有cookie')
+               print(f'[任务名]{i.name}[{i.fk}]-有cookie')
+               print(f'[数据]{i.data}')
                a=requests.post(i.url,data=i.data,cookies=eval(i.cookie),headers=eval(i.header))
               
               try:
-                   print(json.loads(a.text))
+                   print(f'[任务返回]{json.loads(a.text)}')
                    b=log_a.objects.create(user=uuid.uuid1(),name=i.name,username=i.user,data=str(a.json()),time= datetime.datetime.now())
                
               except:
@@ -80,10 +84,15 @@ def job():
     print("I'm working...")
     a=qian()
     a.qian()
-
-#schedule.every(0.1).minutes.do(job)
+pz=user.objects.get(username='配置文件')
+print(pz.lijie)
+if eval(pz.lijie)['type']=='001':
+	schedule.every(0.1).minutes.do(job)
+	print('[时间]10秒')
 #schedule.every().hour.do(job)
-schedule.every().day.at("00:00").do(job)
+else:
+	schedule.every().day.at("00:00").do(job)
+	print('[时间]00：00点')
 #schedule.every().monday.do(job)
 #schedule.every().wednesday.at("13:15").do(job)
 

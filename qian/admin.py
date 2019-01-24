@@ -16,7 +16,6 @@ class log_aAdmin(admin.ModelAdmin):
 class userAdmin(admin.ModelAdmin):
     list_filter = ['time']#过滤器
     search_fields = ['username']
-    
     list_display = ('username','time')
 
 

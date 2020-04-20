@@ -20,8 +20,8 @@ router.register(r'DataViewSet',views.DataUserViewSet)
 urlpatterns=[
 url('^api/',include(router.urls)),
 path('',views.index,name='index'),
-path('login/',views.login,name='login'),
-path('sign/',views.sign,name='sign'),
+path('^login/',views.login,name='login'),
+path('^sign/',views.sign,name='sign'),
 
 
 # url('user/', user_list),
